@@ -1,8 +1,10 @@
 import './App.css';
+import HeaderLogged from './components/header/headerLogged.component'
 
 function App() {
   return (
     <div className="App">
+        <HeaderLogged></HeaderLogged>
       <header className="App-header">
         <p>
           Bienvenido a Cyber Place

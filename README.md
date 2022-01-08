@@ -1,2 +1,5 @@
 # cyber-place-wa
-Fronted app using React JS 
+Correr los comandos:
+
+- npm i
+- npm start
