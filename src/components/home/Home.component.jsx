@@ -1,10 +1,6 @@
-import './App.css';
-import HeaderLogged from './components/header/headerLogged.component'
-
-function App() {
+function Home() {
   return (
     <div className="App">
-        <HeaderLogged></HeaderLogged>
       <header className="App-header">
         <p>
           Bienvenido a Cyber Place
@@ -12,8 +8,7 @@ function App() {
         <a
           className="App-link"
           href="https://bit.ly/3n9qNeK"
-          target="_blank"
-          rel="noopener noreferrer"
+          target="_blank" rel="noreferrer"
         >
           Comencemos
         </a>
@@ -22,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
