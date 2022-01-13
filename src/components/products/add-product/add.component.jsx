@@ -1,35 +1,50 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import dataService from '../../../services/product.service';
 
-const AddProduct = () => {
-  const [name,setName] = useState('');
-  const [price,setprice] = useState(0);
-  const [description,setdescription] = useState('');
-  const [starts,setstarts] = useState(5);
+const Formulario = () => {
 
-  function changeName(event) {
-    setName(event.target.name);
+
+  const [datos, setDatos] = useState({
+    name: '',
+    price: 0,
+    description: '',
+    stars: 0
+  })
+
+  const [status, setStatus] = useState('  ')
+
+  const handleInputChange = (event) => {
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value,
+    })
   }
 
-  function sendProduct(params) {
-    console.log(name);
-    console.log('Melo', name, price);
+  const enviarDatos = (event) => {
+    event.preventDefault()
+    setStatus('')
+    dataService.sendProduct(datos,setStatus)
   }
+
   return (
-  <div>
-    <h3>Ingrese los siguientes datos: </h3>
-    <form onSubmit={e => e.preventDefault()}> 
-    <label >Nombre</label>
-      <input type="text" onChange={changeName} /> <br />  
-    <label >Precio</label>
-      <input type="number" onChange={setprice} name="precio"/> <br />
-    <label >Descripcion</label>
-      <input type="text" name="descripcion"/> <br />
-    <label >Estrellas</label>
-      <input type="text" name="estrellas"/>   
-    <br /><br />
-      <button onClick={sendProduct}>Guardar</button>
-    </form>
-  </div>)
+    <div>
+      <h1>Agregar productos</h1>
+      <form onSubmit={enviarDatos}>
+        <input type="text" placeholder="Nombre" onChange={handleInputChange} name="name"></input>
+        <div>
+          <input type="number" placeholder="Precio" onChange={handleInputChange} name="price"></input>
+        </div>
+        <div>
+          <input type="text" placeholder="Descripcion" onChange={handleInputChange} name="description"></input>
+        </div>
+        <div>
+          <input type="number" placeholder="Calificacion" onChange={handleInputChange} name="stars"></input>
+        </div>
+        <button type="submit" className="btn btn-primary">Enviar</button>
+      </form>
+        <p>{status}</p>
+    </div>
+  );
 }
 
-export default AddProduct
+export default Formulario;
