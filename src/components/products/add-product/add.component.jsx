@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import dataService from '../../../services/product.service';
 
-const Formulario = () => {
+const AddProduct = () => {
 
 
   const [datos, setDatos] = useState({
@@ -30,6 +30,9 @@ const Formulario = () => {
     <div>
       <h1>Agregar productos</h1>
       <form onSubmit={enviarDatos}>
+        <div>
+          <input type="file" placeholder="Imagen" onChange={handleInputChange} name="image"></input>
+        </div>
         <input type="text" placeholder="Nombre" onChange={handleInputChange} name="name"></input>
         <div>
           <input type="number" placeholder="Precio" onChange={handleInputChange} name="price"></input>
@@ -47,4 +50,4 @@ const Formulario = () => {
   );
 }
 
-export default Formulario;
+export default AddProduct;

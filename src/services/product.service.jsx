@@ -28,7 +28,22 @@ const dataService = {
       .catch(error => {
         console.log(error);
       });
-  },
+    },
+
+    getProduct: function (id,setDatos,setStatus) {
+  
+      Axios.get(`http://localhost:3333/products/${id}`)
+      .then(response => {
+          if (response.status===200) {
+            setDatos(response.data)
+          }else{
+            setStatus('Error al traer producto, posiblemente no existe el id')
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
 };
 
 export default dataService ;
