@@ -36,12 +36,13 @@ const EditProduct = () => {
   const enviarDatos = (event) => {
     event.preventDefault()
     setStatus('')
-    dataService.sendProduct(datos, setStatus)
+    dataService.updateProduct(datos, setStatus)
   }
 
   return (
     <div>
-      <h1>Editar producto</h1>
+      <h2>Editar producto</h2>
+      <br />  
       <form onSubmit={buscarData}>
         <div>
           <input type="number" placeholder="Id" onChange={handleInputChange} name="id"></input>

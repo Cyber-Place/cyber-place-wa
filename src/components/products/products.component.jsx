@@ -1,5 +1,8 @@
 const ManageProduct = () => {
   return (
+    <>
+    <h2>Gestión de productos</h2>
+    <br />
     <ul>
       <div>
         <a href="/product/add">Agregar</a>
@@ -11,6 +14,7 @@ const ManageProduct = () => {
         <a href="/product/delete">Borrar</a>
       </div>
     </ul>
+    </>
   )
 }
 

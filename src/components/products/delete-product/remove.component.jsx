@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 import dataService from '../../../services/product.service';
+
 
 const DeleteProduct = () => {
 
@@ -20,28 +22,29 @@ const DeleteProduct = () => {
     })
   }
 
-  const enviarDatos = (event) => {
+  const enviarAlerta = (event) =>{
     event.preventDefault()
-    setStatus('')
-    dataService.sendProduct(datos,setStatus)
+    swal({
+      title: 'Cuidado',
+      text: 'Desea eliminar este dato?',
+      icon: 'warning',
+      buttons: ['No','Si']
+    }).then(response =>{
+      if(response){
+        setStatus('')
+        dataService.deleteProduct(datos.id,setStatus)
+      }
+    })
   }
 
   return (
     <div>
-      <h1>Agregar productos</h1>
-      <form onSubmit={enviarDatos}>
+      <h2>Borrar producto</h2>
+      <br />  
+      <form onSubmit={enviarAlerta}>
         <div>
-          <input type="file" placeholder="Imagen" onChange={handleInputChange} name="image"></input>
-        </div>
-        <input type="text" placeholder="Nombre" onChange={handleInputChange} name="name"></input>
-        <div>
-          <input type="number" placeholder="Precio" onChange={handleInputChange} name="price"></input>
-        </div>
-        <div>
-          <input type="text" placeholder="Descripcion" onChange={handleInputChange} name="description"></input>
-        </div>
-        <div>
-          <input type="number" placeholder="Calificacion" onChange={handleInputChange} name="stars"></input>
+        <div><p>Introduzca el id que desea eliminar</p></div>
+          <input type="number" placeholder="Id" onChange={handleInputChange} name="id"></input>
         </div>
         <button type="submit" className="btn btn-primary">Enviar</button>
       </form>

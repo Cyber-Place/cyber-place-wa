@@ -23,12 +23,13 @@ const AddProduct = () => {
   const enviarDatos = (event) => {
     event.preventDefault()
     setStatus('')
-    dataService.sendProduct(datos,setStatus)
+    dataService.createProduct(datos,setStatus)
   }
 
   return (
     <div>
-      <h1>Agregar productos</h1>
+      <h2>Agregar productos</h2>
+      <br />
       <form onSubmit={enviarDatos}>
         <div>
           <input type="file" placeholder="Imagen" onChange={handleInputChange} name="image"></input>
