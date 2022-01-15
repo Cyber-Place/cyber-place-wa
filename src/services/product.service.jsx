@@ -62,18 +62,16 @@ const dataService = {
     });
   },
 
-  getAllProducts: function (selectedTeam, updateMembers) {
-    if (selectedTeam) {
+  getAllProducts: function (setDatos) {
       Axios({
-        url: `http://127.0.0.1:3333/api/control-tower/team/${selectedTeam}`,
+        url: `http://127.0.0.1:3333/products/`,
       })
         .then(response => {
-          updateMembers(response.data);
+          setDatos(response.data);
         })
         .catch(error => {
           console.log(error);
         });
-    }
   },
 };
 

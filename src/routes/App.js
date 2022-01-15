@@ -6,6 +6,7 @@ import AddProduct from '../components/products/add-product/add.component';
 import ManageProduct from '../components/products/products.component';
 import EditProduct from '../components/products/edit-product/edit.component';
 import DeleteProduct from '../components/products/delete-product/remove.component';
+import BuyProduct from '../components/products/buy-product/buy.component';
 
 const App = () => (
   <div>
@@ -16,6 +17,7 @@ const App = () => (
         <Route path="/product/add" element={<AddProduct/>} />
         <Route path="/product/edit" element={<EditProduct/>} />
         <Route path="/product/delete" element={<DeleteProduct/>} />
+        <Route path="/product/buy" element={<BuyProduct/>} />
         <Route path="/" element={<Home/>} />
       </Routes>
     </Router>
