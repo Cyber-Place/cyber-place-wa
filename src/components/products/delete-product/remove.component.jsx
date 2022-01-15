@@ -22,17 +22,29 @@ const DeleteProduct = () => {
     })
   }
 
-  const enviarAlerta = (event) =>{
+  const buscarData = async () => {
+    setStatus('')
+    setDatos({
+      name: '',
+      price: 0,
+      description: '',
+      stars: 0
+    })
+    await dataService.getProduct(datos.id, setDatos, setStatus)
+  }
+
+  const enviarAlerta = (event) => {
     event.preventDefault()
+    buscarData()
     swal({
       title: 'Cuidado',
-      text: 'Desea eliminar este dato?',
+      text: `Desea eliminar ${datos.name}?`,
       icon: 'warning',
-      buttons: ['No','Si']
-    }).then(response =>{
-      if(response){
+      buttons: ['No', 'Si']
+    }).then(response => {
+      if (response) {
         setStatus('')
-        dataService.deleteProduct(datos.id,setStatus)
+        dataService.deleteProduct(datos.id, setStatus)
       }
     })
   }
@@ -40,15 +52,15 @@ const DeleteProduct = () => {
   return (
     <div>
       <h2>Borrar producto</h2>
-      <br />  
+      <br />
       <form onSubmit={enviarAlerta}>
         <div>
-        <div><p>Introduzca el id que desea eliminar</p></div>
+          <div><p>Introduzca el id que desea eliminar</p></div>
           <input type="number" placeholder="Id" onChange={handleInputChange} name="id"></input>
         </div>
         <button type="submit" className="btn btn-primary">Enviar</button>
       </form>
-        <p>{status}</p>
+      <p>{status}</p>
     </div>
   );
 }
