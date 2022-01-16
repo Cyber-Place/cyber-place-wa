@@ -13,7 +13,7 @@ function HeaderLogged(params) {
         <div className="navbar-nav">
           <a className="nav-item nav-link" href="/product/manage"> Gestion </a>
           <a className="nav-item nav-link" href="/product/buy">Comprar</a>
-          <a className="nav-item nav-link" href="/shopping/cart">Ver Carrito</a>
+          <a className="nav-item nav-link" href="/shopping-cart">Ver Carrito</a>
           <a className="nav-item nav-link" href="logout">Salir</a>
         </div>
       </div>
