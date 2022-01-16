@@ -11,10 +11,9 @@ function HeaderLogged(params) {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <a className="nav-item nav-link" href="/add">Agregar </a>
-          <a className="nav-item nav-link" href="/delete">Eliminar</a>
-          <a className="nav-item nav-link" href="/buy">Comprar</a>
-          <a className="nav-item nav-link" href="/shopping-cart">Ver Carrito</a>
+          <a className="nav-item nav-link" href="/product/manage"> Gestion </a>
+          <a className="nav-item nav-link" href="/product/buy">Comprar</a>
+          <a className="nav-item nav-link" href="/shopping/cart">Ver Carrito</a>
           <a className="nav-item nav-link" href="logout">Salir</a>
         </div>
       </div>
