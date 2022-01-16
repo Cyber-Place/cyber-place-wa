@@ -3,6 +3,7 @@ import {  BrowserRouter as Router,  Route,  Routes} from "react-router-dom";
 import LoggedHeader from '../components/header/HeaderLogged.component'
 import Home from '../components/home/Home.component'
 import AddProduct from '../components/products/add-product/add.component';
+import Cart from '../components/cart/cart.component';
 import ManageProduct from '../components/products/products.component';
 import EditProduct from '../components/products/edit-product/edit.component';
 import DeleteProduct from '../components/products/delete-product/remove.component';
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/product/delete" element={<DeleteProduct/>} />
         <Route path="/product/buy" element={<BuyProduct/>} />
         <Route path="/" element={<Home/>} />
+        <Route path="/shopping-cart" element={<Cart/>} />
       </Routes>
     </Router>
   </div>
