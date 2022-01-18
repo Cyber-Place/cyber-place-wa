@@ -1,18 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import HeaderLogged from './HeaderLogged'
+import HeaderUnlogged from './HeaderUnlogged'
+
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+    const state = useSelector(state => state);
+    const access = state.account;
+
     return (
         <div>
-            <h1>Menu test</h1>
-            <nav>
-                <Link to="/">Home</Link>
-                <br/>
-                <Link to="/login">Login</Link>
-                <br/>
-                <Link to="/register">Register</Link>
-            </nav>
-            
+            {access.isLogged === true ? <HeaderLogged/> : <HeaderUnlogged/> }
         </div>
     )
 }

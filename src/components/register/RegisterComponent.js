@@ -6,14 +6,16 @@ import { useNavigate } from 'react-router-dom';
 
 import '../login/LoginComponent.scss';
 
-import { Link } from 'react-router-dom';
+import {Dropdown} from 'react-bootstrap'
 
 const initialData = {
-    username : "",
-    password : ""
+    username:"",
+    full_name:"",
+    email:"",
+    password:"",
 }
 
-const LoginComponent = () => {
+const RegisterComponent = () => {
     const state = useSelector(state => state);
     const access = state.account;
 
@@ -35,7 +37,7 @@ const LoginComponent = () => {
         e.preventDefault();
         setErrorMessage(null);
         if(!data.username || !data.password){
-            setErrorMessage("Datos incompletos");
+            alert("Datos incompletos");
             return;
         }
         
@@ -53,26 +55,33 @@ const LoginComponent = () => {
         });
     };
     return (
-        <div className='container-register'>
-            <h3>Iniciar sesión</h3>
-            <div className = "not-register">
-                <span> ¿No estás registrado? </span>
-                <Link to ="/register" className='register'> Registrate </Link>
-            </div>
-            <form className="mt-3 form-login" onSubmit={handleLogin}>
-                <div className="f_placeholder">Usuario</div>
-                <input type="text" name='username' placeholder='' onChange={handleChange} value={data.username} /> 
-                <div className="f_placeholder">Contraseña</div>
-                <input type="password" name='password' placeholder='' onChange={handleChange} value={data.password} />
-                <div className="f_placeholder"></div>
-                {errorMessage && <ErrorBox errorMessage={errorMessage}/>}
-                <button type="submit">Ingresar</button>
+        <div>
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+                <input type="text" name='username' placeholder='Usuario' onChange={handleChange} value={data.username} /> 
+                <br/>
+                <input type="password" name='password' placeholder='Contraseña' onChange={handleChange} value={data.password} /> 
+                <br/>
+                <input type="submit" placeholder='Ingresar'/> 
             </form>
+
+
+            <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Dropdown Button
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+            </Dropdown>
             
-            
+            {errorMessage && <ErrorBox errorMessage={errorMessage}/>}
 
         </div>
     )
 }
 
-export default LoginComponent
+export default RegisterComponent
