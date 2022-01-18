@@ -1,0 +1,59 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Source mixin
+@mixin make-container($padding-x: $container-padding-x) {
+    width: 60%;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// Usage
+.custom-container {
+    @include make-container();
+}
+
+.contLogin{
+    height: 70vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .row_box{
+        height: 100%;
+    }
+
+    .login-form{
+        background-color: #ffffff;
+    }
+
+    .vertical-cont{
+        position: relative;
+        height: 100%;
+    }
+
+    .vertical-center{
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .login-image {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../assets/img/background_login.jpeg");
+        background-color: #cccccc;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .login-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+}

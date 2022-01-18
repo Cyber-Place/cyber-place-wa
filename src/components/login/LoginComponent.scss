@@ -1,0 +1,50 @@
+.container-login{
+    padding-top: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
+
+    h3{
+        color:#272727;
+    }
+
+    .not-register{
+        font-size: 0.8rem;
+        color: #414141;
+    }
+    
+    .register{
+        margin-left: 0.2rem;
+        text-decoration: none;
+        font-size: 0.8rem;
+        color: #5a98e9;
+    }
+    
+    .form-login input{
+        padding: 4px 8px 4px 8px;
+        font-size: 15px;
+        background-color: #f0f0f0;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #dbdbdb;
+        width: 100%;
+    }
+    form .f_placeholder{
+        margin-top: 7%;
+        font-weight: 900;
+        font-size: 0.8rem;
+        color: #272727;
+    }
+    
+    form button{
+        font-weight: 600;
+        background-color: 	#87ceeb;
+        padding: 0.4rem 0.8rem 0.4rem 0.8rem,;
+        font-size: 0.8rem;
+        border:0;
+        &:hover {
+            background-color: 	#7cc3df;
+        }
+    }
+}
+
+
