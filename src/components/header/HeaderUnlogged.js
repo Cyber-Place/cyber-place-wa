@@ -16,7 +16,6 @@ const HeaderUnlogged = () => {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav ms-4">
                 <Link to="/" className="nav-item nav-link" >Home</Link>
-                <Link to="/product/manage" className="nav-item nav-link px-3"> Gestion </Link>
                 <Link to="/product/buy" className="nav-item nav-link px-3">Productos</Link>
                 <Link to="/shopping-cart" className="nav-item nav-link px-3" >Ver Carrito</Link>
               </div>

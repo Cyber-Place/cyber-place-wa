@@ -42,7 +42,7 @@ const LoginComponent = () => {
         loginUser({variables: {
             username: data.username,
             password: data.password
-        }});
+        }})
     };
 
     
@@ -53,7 +53,7 @@ const LoginComponent = () => {
         });
     };
     return (
-        <div className='container-register'>
+        <div className='container-login'>
             <h3>Iniciar sesión</h3>
             <div className = "not-register">
                 <span> ¿No estás registrado? </span>

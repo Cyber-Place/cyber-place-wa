@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const ALL_PRODUCTS   = gql`
+export const LOGIN   = gql`
         mutation loginMut($username: String!, $password: String!){
             login(
                 user:{
@@ -16,3 +16,19 @@ export const ALL_PRODUCTS   = gql`
             }
         }
     `;
+
+
+export const REGISTER   = gql`
+    mutation registerMut($username: String!, $full_name: String!, $email: String!, $password: String!){
+        register(
+            user:{
+                username: $username
+                full_name: $full_name
+                email: $email
+                password: $password
+            }
+        ){
+            message
+        }
+    }
+`;
