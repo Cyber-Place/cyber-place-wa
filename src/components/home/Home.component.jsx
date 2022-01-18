@@ -1,4 +1,19 @@
-function Home() {
+import { useSelector } from "react-redux";
+import { accountService } from "../../services/account/accountService";
+
+
+const Home = () => {
+  const state = useSelector(state => state);
+  const access = state.account;
+  
+  let accServ = accountService();
+  const logoutUser = accServ.useLogout();
+  
+
+  const handleLogout = (e) =>{
+    logoutUser();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,9 +27,11 @@ function Home() {
         >
           Comencemos
         </a>
+        <p>Logueado: {JSON.stringify(access)}</p>
+        <button onClick={handleLogout}>Logout</button>
       </header>
     </div>
-  );
+  )
 }
 
 export default Home;

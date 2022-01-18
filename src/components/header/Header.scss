@@ -1,0 +1,12 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+.redirect{
+    padding: 5px 0px 5px 0px;
+    text-decoration: none;
+    font-size: 15px;
+    color:black;
+    &:hover {
+        color:black;
+    }
+}
+
