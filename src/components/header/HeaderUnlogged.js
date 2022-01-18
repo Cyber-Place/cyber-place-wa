@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Box from '@mui/material/Box';
 
 const HeaderUnlogged = () => {
     //Esto es solo para ejemplo
@@ -39,19 +41,17 @@ const HeaderUnlogged = () => {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav ms-4">
+              <div className="navbar-nav ms-4" align="center">
                 <Link to="/product/buy" className="nav-item nav-link px-3">Productos</Link>
-                <Link to="/shopping-cart" className="nav-item nav-link px-3" >Ver Carrito</Link>
-              </div>
-            </div>
-            <form className="d-flex">
-                <Link to="/login" className="btn btn-light me-3" >
+                <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
+                <Link to="/login" className="nav-item nav-link px-3" >
                     Iniciar sesión
                 </Link>
-                <Link to="/register" className="btn btn-light me-5" >
+                <Link to="/register" className="nav-item nav-link px-3" >
                     Registrarse
                 </Link>
-            </form>
+              </div>
+            </div>
           </div>
         </nav>
     )

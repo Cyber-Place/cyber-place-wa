@@ -7,6 +7,7 @@ import { ReactComponent as Settings } from '../../assets/icons/sliders.svg';
 import { ReactComponent as Cart } from '../../assets/icons/cart.svg';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './Header.scss'
 
@@ -56,7 +57,7 @@ function HeaderLogged() {
           <div className="navbar-nav ms-4">
             <Link to="/" className="nav-item nav-link" >Home</Link>
             <Link to="/product/buy" className="nav-item nav-link px-3">Productos</Link>
-            <Link to="/shopping-cart" className="nav-item nav-link px-3" >Ver Carrito</Link>
+            <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
           </div>
         </div>
         <form className="d-flex">
