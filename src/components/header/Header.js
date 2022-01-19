@@ -9,7 +9,7 @@ const Header = () => {
     const access = state.account;
 
     return (
-        <div>
+        <div className='header'> 
             {access.isLogged === true ? <HeaderLogged/> : <HeaderUnlogged/> }
         </div>
     )

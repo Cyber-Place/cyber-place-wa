@@ -1,12 +1,36 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
-.redirect{
-    padding: 5px 0px 5px 0px;
-    text-decoration: none;
-    font-size: 15px;
-    color:black;
-    &:hover {
+
+.header{
+    .redirect{
+        padding: 5px 0px 5px 0px;
+        text-decoration: none;
+        font-size: 15px;
         color:black;
     }
+    .dropdown-item{
+        &:hover{
+            background-color: rgb(226, 226, 226);
+        }
+        &:active{
+            background-color: rgb(194, 194, 194);
+        }
+    }
+
+    .search-bar{
+        width:40%;
+        .MuiInputBase-input {
+            height: 0.5rem;
+        }
+    }
+    
+    .account-icon{
+        margin-top: -150%;
+        width: 300%;
+        height: 300%;
+        
+    }
 }
+
+
 
