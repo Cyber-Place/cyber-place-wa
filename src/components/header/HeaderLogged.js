@@ -55,21 +55,11 @@ function HeaderLogged() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-4">
-            <Link to="/" className="nav-item nav-link" >Home</Link>
             <Link to="/product/buy" className="nav-item nav-link px-3">Productos</Link>
             <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
           </div>
         </div>
         <form className="d-flex">
-          <Dropdown>
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              <Cart/>
-            </Dropdown.Toggle>
-            <Dropdown.Menu >
-                <Dropdown.Item >Administrador de productos</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <button className="btn btn-danger mx-4" onClick={handleLogout}>Cerrar sesión</button>
           <Dropdown className="me-4">
             <Dropdown.Toggle variant="light" id="dropdown-basic">
               <Settings/>
@@ -81,6 +71,9 @@ function HeaderLogged() {
                 <Dropdown.Item>
                   <Link to="/product/manage" className="nav-item px-3 redirect"> Cambiar contraseña </Link>
                 </Dropdown.Item>   
+                <Dropdown.Item>
+                  <a onClick={handleLogout} className="nav-item px-3 redirect">Cerrar sesión</a>
+                </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </form>
