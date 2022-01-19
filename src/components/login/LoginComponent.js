@@ -59,7 +59,7 @@ const LoginComponent = () => {
                 <span> ¿No estás registrado? </span>
                 <Link to ="/register" className='register'> Registrate </Link>
             </div>
-            <form className="mt-3 form-login" onSubmit={handleLogin}>
+            <form className="mt-3 mb-5 form-login" onSubmit={handleLogin}>
                 <div className="f_placeholder">Usuario</div>
                 <input type="text" name='username' placeholder='' onChange={handleChange} value={data.username} /> 
                 <div className="f_placeholder">Contraseña</div>

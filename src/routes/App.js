@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {  BrowserRouter as Router,  Route,  Routes} from "react-router-dom";
-import Home from '../components/home/Home.component'
+
 import AddProduct from '../components/products/add-product/add.component';
 import Cart from '../components/cart/cart.component';
 import ManageProduct from '../components/products/products.component';
@@ -13,6 +13,7 @@ import Register from '../pages/Register/Register';
 import Error404 from '../pages/Error404/Error404';
 import Header from '../components/header/Header';
 import { accountService } from '../services/account/accountService';
+import Home from '../pages/Home/Home';
 
 
 
