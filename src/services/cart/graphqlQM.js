@@ -1,17 +1,14 @@
 import { gql } from '@apollo/client';
 
 export const GETCART   = gql`
-        query getcart($username: String!){
-            login(
-                user:{
-                    username: $username
-                    password: $password
-                }
+        query getCartQuery($username: String!){
+            shoppingListById(
+                id:$username
             ){
-                statusCode
-                message
-                data{
-                    accessToken
+                _id,
+                product_list {
+                    product_id,
+                    quantity
                 }
             }
         }

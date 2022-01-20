@@ -11,7 +11,10 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-
+import { accountService } from '../../services/account/accountService';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
+import { GETUSERNAME } from '../../services/account/graphqlQM';
+import { GETCART } from '../../services/cart/graphqlQM';
 
 
 function Cart() {
@@ -22,13 +25,20 @@ function Cart() {
     setAge(event.target.value);
   };
 
-
-
+  const accService =accountService(); 
+  const  {data} =useQuery(GETUSERNAME, {variables: {jwt:window.localStorage.getItem('userToken')}});
+  const username =data?.getusername?.data
+  const {loading,shopping_cart} = useQuery(GETCART,{skip:!username ,variables:{username:username}})
+  const sc=[] 
+  if(!loading) {
+    console.log("listo")
+    console.log(username)
+  }
     return (
       <div className="App">
         <header className="App-header">
           <h2>
-            Carrito
+            Carrito de {data && data.getusername.data}
           </h2>
         </header>
       <Divider></Divider>

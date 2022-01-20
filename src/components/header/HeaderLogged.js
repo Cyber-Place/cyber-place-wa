@@ -10,12 +10,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './Header.scss'
 import SearchBar from './SearchBar';
 
+import { useMutation, useQuery } from '@apollo/client';
+import { GETUSERNAME } from '../../services/account/graphqlQM';
+
 function HeaderLogged() {
   let accServ = accountService();
   const logoutUser = accServ.useLogout();
   
   const handleLogout = (e) =>{
     logoutUser();
+    window.location.href='/'
   }
 
 
