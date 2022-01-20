@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { checkJwtAction, loginAction, logoutAction } from '../../actions/accountActions';
-import { GETUSERNAMEJWT, LOGIN, REGISTER } from './graphqlQM';
+import { GETUSERNAMEJWT, LOGIN, REGISTER ,GETUSERNAME} from './graphqlQM';
 
 
 export const accountService = ()=>{
