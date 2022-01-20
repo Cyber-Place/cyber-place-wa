@@ -12,7 +12,6 @@ import Register from '../pages/Register/Register';
 import Error404 from '../pages/Error404/Error404';
 import Header from '../components/header/Header';
 import ManageProduct from '../pages/Products/Products';
-import Home from '../pages/Home/Home';
 import BuyProduct from '../pages/Products/BuyProduct';
 
 
@@ -42,8 +41,6 @@ const App = () => {
           <Route path="/product/add" element={<AddProduct/>} />
           <Route path="/product/edit" element={<EditProduct/>} />
           <Route path="/product/delete" element={<DeleteProduct/>} />
-
-          <Route path="/product/buy" element={<BuyProduct/>} />
           
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
@@ -51,7 +48,7 @@ const App = () => {
           <Route path="/shopping-cart" element={<Cart/>} />
 
 
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<BuyProduct/>} />
           <Route path="*" element={<Error404/>} />          
         </Routes>
       </Router>
