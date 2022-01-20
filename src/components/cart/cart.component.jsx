@@ -17,8 +17,13 @@ import { GETUSERNAME } from '../../services/account/graphqlQM';
 import { GETCART } from '../../services/cart/graphqlQM';
 import username from '../header/HeaderLogged'
 import HeaderLogged from '../header/HeaderLogged';
+
+
 function Cart() {
   const username=window.sessionStorage.getItem("user")
+  if(username==null){
+    window.location.href='/'
+  }
   const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
   const [age, setAge] = React.useState('');
 

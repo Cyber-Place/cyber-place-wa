@@ -19,6 +19,7 @@ function HeaderLogged() {
   
   const handleLogout = (e) =>{
     logoutUser();
+    window.sessionStorage.removeItem("user")
     window.location.href='/'
   }
   const {data:usernameData}=useQuery(GETUSERNAME, {variables: {jwt:window.localStorage.getItem('userToken')}});
