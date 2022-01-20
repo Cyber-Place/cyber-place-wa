@@ -1,14 +1,10 @@
 import { useMutation, useQuery } from '@apollo/client';
-import { stringifyForDisplay } from '@apollo/client/utilities';
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import ProductInfo from '../../components/products/ProductInfo';
-import { accountService } from '../../services/account/accountService';
 import { GETUSERNAMEJWT } from '../../services/account/graphqlQM';
 import { ADDITEMHISTORY } from '../../services/history/graphqlQM';
 import { PRODUCTBYID } from '../../services/product/graphqlQM';
-import { productService } from '../../services/product/productService';
 import './Products.scss'
 
 
@@ -20,7 +16,7 @@ function InfoProduct() {
     const token = window.localStorage.getItem("userToken");
     const { data: usernameData } = useQuery(GETUSERNAMEJWT, {
         skip: !producto || !token,
-        variables: { jwt:token, onError: error =>{} }
+        variables: { jwt:token}, onError: error =>{}
         }
     )
     const username = usernameData?.getusername;

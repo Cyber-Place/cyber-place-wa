@@ -8,3 +8,18 @@ export const ADDITEMHISTORY   = gql`
               }
         }
     `;
+
+export const MYHISTORY   = gql`
+    query myhistoryQue($jwt:String!){
+        mySearchHistory(jwt:$jwt){
+            id
+            username
+            items{
+                id
+                searchTime
+                productId
+            }
+        }
+    }
+`;
+

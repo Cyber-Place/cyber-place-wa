@@ -17,6 +17,7 @@ import BuyProduct from '../pages/Products/BuyProduct';
 
 import { accountService } from '../services/account/accountService';
 import InfoProduct from '../pages/Products/InfoProduct';
+import { History } from '../pages/History/History';
 
 
 
@@ -49,6 +50,8 @@ const App = () => {
           <Route path="/shopping-cart" element={<Cart/>} />
 
           <Route path="/product/:id" element={<InfoProduct/>} />
+
+          <Route path="/history" element={<History/>} />
 
           <Route path="/" element={<BuyProduct/>} />
           <Route path="*" element={<Error404/>} />          
