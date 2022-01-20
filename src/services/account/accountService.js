@@ -1,7 +1,7 @@
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { checkJwtAction, loginAction, logoutAction } from '../../actions/accountActions';
-import { LOGIN, REGISTER } from './graphqlQM';
+import { GETUSERNAMEJWT, LOGIN, REGISTER } from './graphqlQM';
 
 
 export const accountService = ()=>{
@@ -73,10 +73,21 @@ export const accountService = ()=>{
         });;
     };
 
+    const useGetUsername = ({variables}) =>{
+        console.log(variables);
+        return useQuery(GETUSERNAMEJWT,{
+            variables,
+            onError: (error) => {
+                console.log(error);
+            }
+        })
+    };
+
     return{
         useLogin,
         useLogout,
         useCheckJWT,
         useRegister,
+        useGetUsername,
     }
 }
