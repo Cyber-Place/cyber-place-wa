@@ -11,7 +11,7 @@ import './Header.scss'
 import SearchBar from './SearchBar';
 
 import { useMutation, useQuery } from '@apollo/client';
-import { GETUSERNAME, GETUSERNAMEJWT } from '../../services/account/graphqlQM';
+import { GETUSERNAMEJWT } from '../../services/account/graphqlQM';
 
 function HeaderLogged() {
   let accServ = accountService();
