@@ -1,28 +1,33 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 // Source mixin
-@mixin make-container($padding-x: $container-padding-x) {
-    width: 60%;
+@mixin make-container($width,$padding-x: $container-padding-x) {
+    width: $width;
     padding-right: $padding-x;
     padding-left: $padding-x;
     margin-right: auto;
     margin-left: auto;
+    background-color: #ffffff;
 }
 
 // Usage
 .custom-container {
-    @include make-container();
+    @include make-container(60%,"");
 }
 
+
 .contLogin{
-    height: 70vh;
+    
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 4%;
+    margin-bottom: 4%;
     .row_box{
         height: 100%;
     }
 
     .login-form{
         background-color: #ffffff;
+        padding-bottom: 5%;
     }
 
     .vertical-cont{

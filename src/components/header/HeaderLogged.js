@@ -4,12 +4,11 @@ import { accountService } from '../../services/account/accountService';
 import {Dropdown} from 'react-bootstrap';
 
 import { ReactComponent as Settings } from '../../assets/icons/sliders.svg';
-import { ReactComponent as Cart } from '../../assets/icons/cart.svg';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
+import { ReactComponent as Account } from '../../assets/icons/account.svg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import './Header.scss'
+import SearchBar from './SearchBar';
 
 function HeaderLogged() {
   let accServ = accountService();
@@ -18,38 +17,16 @@ function HeaderLogged() {
   const handleLogout = (e) =>{
     logoutUser();
   }
-  //Esto es solo para ejemplo
-  const top100Films = [
-    { title: 'The Shawshank Redemption', year: 1994 },
-    { title: 'The Godfather', year: 1972 },
-    { title: 'The Godfather: Part II', year: 1974 }];
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-
         <Link to="/" className="navbar-brand ms-4" >
           <img src={require('../../assets/img/logo_transparent.png')} width='50px' alt='Logo' /> 
           <span className="ms-2 fs-4">CyberPlace</span>
         </Link>
-        <div style={{width:'60%'}}>
-              <Autocomplete
-                id="free-solo-demo"
-                freeSolo
-                
-                options={top100Films.map((option) => option.title)}
-                renderInput={(params) => 
-                <TextField {...params} label="" variant="outlined" InputLabelProps={{shrink: false}}
-                sx={{
-                  backgroundColor:'white',
-                  borderRadius:'4px',
-          
-                }}
-                
-                />}
-              />
-        </div>
-
+        <SearchBar/>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -60,6 +37,12 @@ function HeaderLogged() {
           </div>
         </div>
         <form className="d-flex">
+          <div className="navbar-nav mx-5" align="center">
+            <Link to="/shopping-cart" className="nav-item nav-link" >
+              <Account className='account-icon' />
+            </Link>
+          </div>
+          
           <Dropdown className="me-4">
             <Dropdown.Toggle variant="light" id="dropdown-basic">
               <Settings/>
@@ -69,10 +52,10 @@ function HeaderLogged() {
                   <Link to="/product/manage" className="nav-item px-3 redirect"> Administrador de productos </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link to="/product/manage" className="nav-item px-3 redirect"> Cambiar contraseña </Link>
+                  <Link to="/account/changepassword" className="nav-item px-3 redirect"> Cambiar contraseña </Link>
                 </Dropdown.Item>   
-                <Dropdown.Item>
-                  <a onClick={handleLogout} className="nav-item px-3 redirect">Cerrar sesión</a>
+                <Dropdown.Item onClick={handleLogout} className="dropdown-item">
+                  <span className="nav-item px-3 redirect">Cerrar sesión</span>
                 </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

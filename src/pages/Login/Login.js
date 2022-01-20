@@ -2,7 +2,7 @@ import LoginComponent from "../../components/login/LoginComponent"
 import "../Login/Login.scss"
 const Login = () => {
     return (
-        <div className="custom-container mt-5 contLogin">
+        <div className="custom-container contLogin">
             <div className="row row_box">
                 <div className="col-6 g-0">
                     <div className="login-image">

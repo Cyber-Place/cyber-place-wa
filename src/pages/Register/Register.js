@@ -5,7 +5,7 @@ import "./Register.scss";
 
 const Register = () => {
     return (
-        <div className="custom-container mt-5 contRegister">
+        <div className="custom-container contRegister">
             <div className="row row_box">
                 <div className="col-6 register-form">
                     <RegisterComponent/>   
