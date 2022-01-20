@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { accountService } from '../../services/account/accountService';
 
 import {Dropdown} from 'react-bootstrap';
@@ -11,10 +11,11 @@ import './Header.scss'
 import SearchBar from './SearchBar';
 
 import { useMutation, useQuery } from '@apollo/client';
-import { GETUSERNAME } from '../../services/account/graphqlQM';
+import { GETUSERNAME, GETUSERNAMEJWT } from '../../services/account/graphqlQM';
 
 function HeaderLogged() {
   let accServ = accountService();
+  let navigate = useNavigate();
   const logoutUser = accServ.useLogout();
   
   const handleLogout = (e) =>{
@@ -22,11 +23,12 @@ function HeaderLogged() {
     window.sessionStorage.removeItem("user")
     window.location.href='/'
   }
-  const {data:usernameData}=useQuery(GETUSERNAME, {variables: {jwt:window.localStorage.getItem('userToken')}});
+  const {data:usernameData}=useQuery(GETUSERNAMEJWT, {variables: {jwt:window.localStorage.getItem('userToken')}});
   if(usernameData){
     window.sessionStorage.setItem("user",usernameData.getusername.data)
+    
   }
-
+  //navigate("/", { replace: true });
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">

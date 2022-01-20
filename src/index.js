@@ -16,7 +16,9 @@ import store from './store';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3500/graphql',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    addTypename: false
+  })
 });
 
 ReactDOM.render(

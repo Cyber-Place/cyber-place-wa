@@ -16,6 +16,7 @@ import BuyProduct from '../pages/Products/BuyProduct';
 
 
 import { accountService } from '../services/account/accountService';
+import InfoProduct from '../pages/Products/InfoProduct';
 
 
 
@@ -25,7 +26,7 @@ const App = () => {
   let accServ = accountService();
   const checkJWT = accServ.useCheckJWT();
   useEffect(() => {
-    document.body.style.backgroundColor = "#f5f5f5";
+    document.body.style.backgroundColor = "#e7e7e7";
   }, []);
   
   useEffect(() => {
@@ -47,6 +48,7 @@ const App = () => {
 
           <Route path="/shopping-cart" element={<Cart/>} />
 
+          <Route path="/product/:id" element={<InfoProduct/>} />
 
           <Route path="/" element={<BuyProduct/>} />
           <Route path="*" element={<Error404/>} />          
