@@ -72,9 +72,6 @@ export const accountService = ()=>{
             }
         });;
     };
-    const useGetUsername = () =>{
-        return useQuery(GETUSERNAME)
-    };
 
     const useGetUsername = ({variables}) =>{
         console.log(variables);
