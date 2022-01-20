@@ -27,14 +27,8 @@ function HeaderLogged() {
           <span className="ms-2 fs-4">CyberPlace</span>
         </Link>
         <SearchBar/>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav ms-4">
-            <Link to="/product/buy" className="nav-item nav-link px-3">Productos</Link>
-            <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
-          </div>
+        <div className="navbar-nav ms-4">
+          <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
         </div>
         <form className="d-flex">
           <div className="navbar-nav mx-5" align="center">
