@@ -3,17 +3,21 @@ import {  BrowserRouter as Router,  Route,  Routes} from "react-router-dom";
 
 import AddProduct from '../components/products/add-product/add.component';
 import Cart from '../components/cart/cart.component';
-import ManageProduct from '../components/products/products.component';
 import EditProduct from '../components/products/edit-product/edit.component';
 import DeleteProduct from '../components/products/delete-product/remove.component';
-import BuyProduct from '../components/products/buy-product/buy.component';
+
 
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Error404 from '../pages/Error404/Error404';
 import Header from '../components/header/Header';
-import { accountService } from '../services/account/accountService';
+import ManageProduct from '../pages/Products/Products';
 import Home from '../pages/Home/Home';
+import BuyProduct from '../pages/Products/BuyProduct';
+
+
+import { accountService } from '../services/account/accountService';
+
 
 
 
@@ -38,6 +42,7 @@ const App = () => {
           <Route path="/product/add" element={<AddProduct/>} />
           <Route path="/product/edit" element={<EditProduct/>} />
           <Route path="/product/delete" element={<DeleteProduct/>} />
+
           <Route path="/product/buy" element={<BuyProduct/>} />
           
           <Route path="/login" element={<Login/>} />

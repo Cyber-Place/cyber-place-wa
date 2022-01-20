@@ -1,0 +1,7 @@
+.buy-product{
+    .custom-container {
+        @include make-container(80%);
+        
+    }
+}
+

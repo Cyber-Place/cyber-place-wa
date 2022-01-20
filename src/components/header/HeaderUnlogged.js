@@ -23,8 +23,8 @@ const HeaderUnlogged = () => {
                 <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
               </div>
             </div>
-            <form className="d-flex">
-              <div className="navbar-nav mx-4" align="center">
+            <form className="d-flex" >
+              <div className="navbar-nav me-4" align="center">
                 <Link to="/login" className="nav-item nav-link px-3" >
                     Iniciar sesión
                 </Link>

@@ -1,18 +1,20 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 // Source mixin
-@mixin make-container($padding-x: $container-padding-x) {
-    width: 60%;
+@mixin make-container($width,$padding-x: $container-padding-x) {
+    width: $width;
     padding-right: $padding-x;
     padding-left: $padding-x;
     margin-right: auto;
     margin-left: auto;
+    background-color: #ffffff;
 }
 
 // Usage
 .custom-container {
-    @include make-container();
+    @include make-container(60%,"");
 }
+
 
 .contLogin{
     
