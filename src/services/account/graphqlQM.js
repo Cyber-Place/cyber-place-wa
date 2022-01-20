@@ -32,3 +32,12 @@ export const REGISTER   = gql`
         }
     }
 `;
+
+
+export const GETUSERNAMEJWT = gql`
+    query getusernameQue($jwt: String!){
+        getusername(jwt:$jwt){
+            data
+        }
+    }
+`;

@@ -2,31 +2,17 @@ import React from 'react'
 import ProductList from '../../components/products/ProductList';
 import { productService } from '../../services/product/productService';
 
-
+import "./Products.scss"
 
 
 function BuyProduct() {
-    let accServ = productService();
-    const {data, error, loading} = accServ.useGetAllProducts();
+    let prodServ = productService();
+    const {data} = prodServ.useGetAllProducts();
     
     return (
         <div className='buy-product'>
-            <div className='custom-container mt-5'>
-                <h2>Selecciona tu producto para comprar </h2>
-                <table className="table" >
-                    <thead>
-                    <tr>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Calificación</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+            <h5 className='custom-container-gray'>Productos más relevantes.</h5>
+            <div className='custom-container-gray'>
                 {data && <ProductList products={data.allProducts} />}
             </div>
         </div>

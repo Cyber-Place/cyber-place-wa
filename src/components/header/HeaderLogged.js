@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { accountService } from '../../services/account/accountService';
 
 import {Dropdown} from 'react-bootstrap';
@@ -12,10 +12,12 @@ import SearchBar from './SearchBar';
 
 function HeaderLogged() {
   let accServ = accountService();
+  let navigate = useNavigate();
   const logoutUser = accServ.useLogout();
   
   const handleLogout = (e) =>{
     logoutUser();
+    navigate("/", { replace: true });
   }
 
 

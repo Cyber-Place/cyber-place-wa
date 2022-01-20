@@ -1,0 +1,49 @@
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Source mixin
+@mixin make-container($width,$padding-x: $container-padding-x) {
+    width: $width;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(230, 230, 230);
+}
+
+@mixin make-container-gray($width,$padding-x: $container-padding-x) {
+    width: $width;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(230, 230, 230);
+}
+
+.buy-product{
+
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgb(230, 230, 230);
+    .custom-container-gray{
+        @include make-container-gray(70%);
+    }
+    
+}
+
+.info-producto{
+    .custom-container-75 {
+        @include make-container(75%);
+    }
+    .product-info{
+        .contenedor-info{
+            background-color: rgb(255, 255, 255);
+        }
+        .info-col{
+            background-color: #fcfcfc;
+            border-style: solid;
+            border-width: 1px;
+        }
+    }
+    
+}
