@@ -21,14 +21,17 @@ function HeaderLogged() {
     logoutUser();
     window.location.href='/'
   }
-
+  const {data:usernameData}=useQuery(GETUSERNAME, {variables: {jwt:window.localStorage.getItem('userToken')}});
+  if(usernameData){
+    window.sessionStorage.setItem("user",usernameData.getusername.data)
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand ms-4" >
           <img src={require('../../assets/img/logo_transparent.png')} width='50px' alt='Logo' /> 
-          <span className="ms-2 fs-4">CyberPlace</span>
+          <span className="ms-2 fs-4">CyberPlace </span>
         </Link>
         <SearchBar/>
         <div className="navbar-nav ms-4">
@@ -64,3 +67,4 @@ function HeaderLogged() {
 }
 
 export default HeaderLogged;
+

@@ -15,30 +15,28 @@ import { accountService } from '../../services/account/accountService';
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 import { GETUSERNAME } from '../../services/account/graphqlQM';
 import { GETCART } from '../../services/cart/graphqlQM';
-
-
+import username from '../header/HeaderLogged'
+import HeaderLogged from '../header/HeaderLogged';
 function Cart() {
-
+  const username=window.sessionStorage.getItem("user")
+  const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
-  const accService =accountService(); 
-  const  {data} =useQuery(GETUSERNAME, {variables: {jwt:window.localStorage.getItem('userToken')}});
-  const username =data?.getusername?.data
-  const {loading,shopping_cart} = useQuery(GETCART,{skip:!username ,variables:{username:username}})
-  const sc=[] 
-  if(!loading) {
-    console.log("listo")
-    console.log(username)
+  
+  let cart=[]
+  if(!cartLoading){
+    cart=cartData.shoppingListById.product_list
+    console.log(cart)
   }
+
     return (
       <div className="App">
         <header className="App-header">
           <h2>
-            Carrito de {data && data.getusername.data}
+            Carrito de {username} 
           </h2>
         </header>
       <Divider></Divider>
