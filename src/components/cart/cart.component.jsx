@@ -11,24 +11,37 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-
+import { accountService } from '../../services/account/accountService';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
+import { GETUSERNAME } from '../../services/account/graphqlQM';
+import { GETCART } from '../../services/cart/graphqlQM';
+import username from '../header/HeaderLogged'
+import HeaderLogged from '../header/HeaderLogged';
 
 
 function Cart() {
-
+  const username=window.sessionStorage.getItem("user")
+  if(username==null){
+    window.location.href='/'
+  }
+  const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
-
+  
+  let cart=[]
+  if(!cartLoading){
+    cart=cartData.shoppingListById.product_list
+    console.log(cart)
+  }
 
     return (
       <div className="App">
         <header className="App-header">
           <h2>
-            Carrito
+            Carrito de {username} 
           </h2>
         </header>
       <Divider></Divider>

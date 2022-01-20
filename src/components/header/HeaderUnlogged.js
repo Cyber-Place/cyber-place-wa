@@ -13,9 +13,9 @@ const HeaderUnlogged = () => {
               <span className="ms-2 fs-4">CyberPlace</span>
             </Link>
             <SearchBar/>
-              <div className="navbar-nav">
+              {/* <div className="navbar-nav">
                 <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
-              </div>
+              </div> */}
             <form className="d-flex" >
               <div className="navbar-nav me-4" align="center">
                 <Link to="/login" className="nav-item nav-link px-3" >
