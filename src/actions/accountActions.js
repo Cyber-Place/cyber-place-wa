@@ -1,7 +1,7 @@
 import { CHECKJWT, LOGIN, LOGOUT } from "../types"
 
-export const loginAction = (jwt) => ({type: LOGIN, payload:jwt});
+export const loginAction = (jwt,username) => ({type: LOGIN, payload:{jwt,username}});
 
 export const logoutAction = () => ({type: LOGOUT});
 
-export const checkJwtAction = () => ({type: CHECKJWT});
+export const checkJwtAction = (jwt,username) => ({type: CHECKJWT, payload:{jwt,username}});

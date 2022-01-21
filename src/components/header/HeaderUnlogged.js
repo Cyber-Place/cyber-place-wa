@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchBar from './SearchBar';
 
 const HeaderUnlogged = () => {
@@ -12,10 +11,9 @@ const HeaderUnlogged = () => {
               <img src={require('../../assets/img/logo_transparent.png')} width='50px' alt='Logo' /> 
               <span className="ms-2 fs-4">CyberPlace</span>
             </Link>
-            <SearchBar/>
-              {/* <div className="navbar-nav">
-                <Link to="/shopping-cart" className="nav-item nav-link px-3" ><ShoppingCartIcon/></Link>
-              </div> */}
+            <div className="collapse navbar-collapse mx-5" id="navbarNavAltMarkup">
+              <SearchBar/>
+            </div>
             <form className="d-flex" >
               <div className="navbar-nav me-4" align="center">
                 <Link to="/login" className="nav-item nav-link px-3" >

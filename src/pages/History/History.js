@@ -1,14 +1,14 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import HistoryComponent from '../../components/history/HistoryComponent';
 import { MYHISTORY } from '../../services/history/graphqlQM';
 
+import './History.scss';
 
 
 export const History = () => {
-    const state = useSelector(state => state);
-    const access = state.account;
+    
 
     let navigate = useNavigate();
     const token = window.localStorage.getItem("userToken");
@@ -28,7 +28,7 @@ export const History = () => {
     
     return (
         <div className="history">
-            
+            <HistoryComponent myHistory={myHistory}/>
         </div>
     )
 }
