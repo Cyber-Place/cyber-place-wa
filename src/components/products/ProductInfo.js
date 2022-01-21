@@ -3,6 +3,7 @@ import "./Products.scss";
 import { Link } from 'react-router-dom'
 
 const ProductInfo = (props) => {
+    console.log(props.product.img_url)
     return (
         <div className='product-info'>
             <h5>Información del producto</h5>
@@ -11,7 +12,7 @@ const ProductInfo = (props) => {
                 </Link>
             <div className="row g-0 py-4 ps-4 pe-3 contenedor-info">
                 <div className="col-md-8">
-                    <img src={"https://acf.geeknetic.es/imgri/imagenes/tutoriales/1520/1520-asus-tuf-fx504gm-00.jpg?f=webp"} className="img-fluid rounded-start" alt={"imgProd_"+props.product.id}/>
+                    <img src={props.product.img_url} className="img-fluid rounded-start" alt={"imgProd_"+props.product.id}/>
                     <hr className='my-3' />
                     <div>
                         <p>Descripción</p>

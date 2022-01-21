@@ -6,7 +6,7 @@ function ProductCard(props) {
     let navigate = useNavigate();
 
     const handleVerInfo = e =>{
-        navigate("/product/"+props.product.id, { replace: true });
+        navigate("/products/"+props.product.id, { replace: true });
     }
     
     return (

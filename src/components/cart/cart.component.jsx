@@ -41,7 +41,7 @@ function Cart() {
       <div className="App">
         <header className="App-header">
           <h2>
-            Carrito de {username} 
+            {username && "Carrito de "+{username} }
           </h2>
         </header>
       <Divider></Divider>

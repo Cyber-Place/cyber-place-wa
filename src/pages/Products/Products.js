@@ -1,23 +1,28 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import ProductList from '../../components/products/ProductList';
+import { productsService } from '../../services/products/productsService';
 
-function Products() {
+import "./Products.scss"
+
+
+function BuyProduct() {
+    const state = useSelector(state => state);
+    const access = state;
+    let prodServ = productsService();
+    const {data} = prodServ.useGetAllProducts();
+    
+
+    
     return (
-        <div>
-            <h2>Gestión de productos</h2>
-            <br />
-            <ul>
-                <div>
-                    <a href="/product/add">Agregar</a>
-                </div>
-                <div>
-                    <a href="/product/edit">Editar</a>
-                </div>
-                <div>
-                    <a href="/product/delete">Borrar</a>
-                </div>
-            </ul>
+        <div className='buy-product'>
+            {JSON.stringify(access.account)}
+            <h5 className='custom-container-gray'>Productos más relevantes.</h5>
+            <div className='custom-container-gray'>
+                {data && <ProductList products={data.allProducts} />}
+            </div>
         </div>
     )
 }
 
-export default Products
+export default BuyProduct
