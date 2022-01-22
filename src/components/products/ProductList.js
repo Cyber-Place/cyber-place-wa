@@ -5,7 +5,9 @@ import './Products.scss';
 function ProductList(props) {
     return (
         <div className='product-list'>
-            {props.products.map((el) => <ProductCard  key={el.id} product={el}/>)}
+            <ul className="card-wrapper">
+                {props.products.map((el) => <ProductCard key={el.id} product={el} />)}
+            </ul>
         </div>
     )
 }
