@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import Loader from '../../components/loader/Loader';
 import ProductList from '../../components/products/ProductList';
 import { productsService } from '../../services/products/productsService';
 
@@ -7,18 +7,19 @@ import "./Products.scss"
 
 
 function BuyProduct() {
-    const state = useSelector(state => state);
-    const access = state;
     let prodServ = productsService();
-    const {data} = prodServ.useGetAllProducts();
-    
+    const { data, loading } = prodServ.useGetAllProducts();
 
-    
+
     return (
-        <div className='buy-product'>
-            {JSON.stringify(access.account)}
-            <h5 className='custom-container-gray'>Productos más relevantes.</h5>
+        <div className='products'>
             <div className='custom-container-gray'>
+                <h4>Productos más relevantes.</h4>
+                {loading &&
+                    <div className='loader'>
+                        <Loader />
+                    </div>
+                }
                 {data && <ProductList products={data.allProducts} />}
             </div>
         </div>
