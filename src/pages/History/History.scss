@@ -1,11 +1,19 @@
-.history{
-    .history-component{
-        
-    }
-    .history-card{
-        background-color: aqua;
-        .title{
-            font-weight: 800;
-        }
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Source mixin
+@mixin make-container($width, $padding-x: $container-padding-x) {
+    width: $width;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.history {
+    padding-top: 4%;
+    padding-bottom: 5%;
+    .custom-container {
+        @include make-container(90%);
+        background-color: rgb(230, 230, 230);
     }
 }

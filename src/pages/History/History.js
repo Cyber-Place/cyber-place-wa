@@ -1,34 +1,31 @@
-import { useQuery } from '@apollo/client';
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import HistoryComponent from '../../components/history/HistoryComponent';
-import { MYHISTORY } from '../../services/history/graphqlQM';
+import HistoryList from '../../components/history/HistoryList';
+import { historyService } from '../../services/history/historyService';
 
 import './History.scss';
 
 
 export const History = () => {
+    const navigate = useNavigate();
+    const histServ = historyService();
+
+    const state = useSelector(state => state);
+    const access = state.account;
     
-
-    let navigate = useNavigate();
-    const token = window.localStorage.getItem("userToken");
-    const { data: myHistoryData } = useQuery(MYHISTORY, {
-        skip: !token ,
-        variables: { jwt:token}, onError: error =>{} 
-        }
-    )
-    const myHistory = myHistoryData?.mySearchHistory;
-    console.log(myHistory)
-
+    const { data: historyData } = histServ.useGetMyHistory(access.jwt);
+    const history = historyData?.mySearchHistory?.items;
     useEffect(() => {
-        if(!token)navigate("../", { replace: true });
-    }, [token])
-
-    console.log(myHistoryData)
+        if (!histServ.isLoggedStorage()) navigate("/", { replace: true });
+    }, [histServ,navigate])
     
     return (
         <div className="history">
-            <HistoryComponent myHistory={myHistory}/>
+            <div className='custom-container'>
+                <h4>Tu historial de búsqueda</h4>
+                {history && <HistoryList history={history}/>}
+            </div>
         </div>
     )
 }
