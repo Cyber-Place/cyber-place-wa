@@ -1,0 +1,72 @@
+.history-list {
+    .card {
+        background-color: rgb(252, 252, 252);
+        border-radius: 0.5rem;
+
+        padding-bottom: 1rem;
+        margin-top: 10px;
+        overflow: hidden;
+
+        img {
+            border-radius: 0.5rem 0.5rem 0 0;
+            width: 100%;
+            object-fit: cover;
+            max-height: #{"max(10rem, 30vh)"};
+            aspect-ratio: 4/3;
+
+            ~ * {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 1px 1px 5px 1px rgb(185, 185, 185);
+        }
+
+        .name {
+            margin-top: 2%;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgb(59, 59, 59);
+        }
+        .price {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgb(71, 71, 71);
+        }
+        .date {
+            font-size: 11px;
+            color: rgb(90, 90, 90);
+        }
+        .delete-item {
+            background-color: #f39797;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.65rem;
+            color:#464646;
+            border: 0;
+            &:hover {
+                background-color: #e78585;
+            }
+        }
+    }
+
+    .card-wrapper {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        display: grid;
+        //grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+        grid-template-columns: repeat(7, minmax(0, 100%));
+        grid-gap: 1%;
+        //max-width: 20%;
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

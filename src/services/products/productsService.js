@@ -26,6 +26,7 @@ export const productsService = ()=>{
             onError: error => {
                 console.log("Error consulta producto "+error);
             },
+            fetchPolicy: "network-only",
         });
         return {data,error};
     }
