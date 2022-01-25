@@ -84,11 +84,16 @@ export const accountService = () => {
         })
     };
 
+    const isLoggedStorage = () =>{
+        return !!window.localStorage.getItem("userToken");
+    }
+
     return {
         useLogin,
         useLogout,
         useCheckJWT,
         useRegister,
         useGetUsername,
+        isLoggedStorage,
     }
 }

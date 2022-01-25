@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const ADDITEMHISTORY   = gql`
+export const ADDITEMHISTORY = gql`
         mutation additemMut($jwt: String!, $productId: Int!){
             addItemMyHistory(jwt:$jwt,item:{productId:$productId}){
                 id
@@ -9,7 +9,7 @@ export const ADDITEMHISTORY   = gql`
         }
     `;
 
-export const MYHISTORY   = gql`
+export const MYHISTORY = gql`
     query myhistoryQue($jwt:String!){
         mySearchHistory(jwt:$jwt){
             id
@@ -19,6 +19,24 @@ export const MYHISTORY   = gql`
                 searchTime
                 productId
             }
+        }
+    }
+`;
+
+export const DELETEITEMHISTORY = gql`
+    mutation delitemMut($jwt:String!, $idItem: String!){
+        deleteItemMyHistory(jwt:$jwt, idItem:$idItem){
+            id
+            username
+        }
+    }
+`;
+
+export const DELETEMYHISTORY = gql`
+    mutation delhistMut($jwt:String!){
+        deleteMyHistory(jwt:$jwt){
+            id
+            username
         }
     }
 `;
