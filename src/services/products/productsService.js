@@ -1,4 +1,4 @@
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 import { ALLPRODUCTS, PRODUCTBYID } from './graphqlQM';
 export const productsService = ()=>{
@@ -7,18 +7,6 @@ export const productsService = ()=>{
         return useQuery(ALLPRODUCTS);
     }
 
-    /*const useGetProductById = () =>{ 
-        const [getProduct, data] = useLazyQuery(PRODUCTBYID,{
-            onError: error => {
-                console.log("Error consulta producto "+error);
-            },
-        });
-        return {
-            getProductById:(id) => getProduct({variables:{id}}),
-            data:data
-        }
-        
-    }*/
 
     const useGetProductById = (id) =>{ 
         const {data,error} = useQuery(PRODUCTBYID,{

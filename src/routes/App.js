@@ -25,6 +25,7 @@ import ProductManagement from '../pages/ProductManagement/ProductManagement';
 import { accountService } from '../services/account/accountService';
 
 import { History } from '../pages/History/History';
+import Footer from '../components/footer/Footer';
 
 
 
@@ -76,6 +77,7 @@ const App = () => {
 
           <Route path="*" element={<Error404 />} />
         </Routes>
+        <Footer/>
       </Router>
     </div>
 

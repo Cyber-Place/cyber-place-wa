@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 
-import { ADDITEMHISTORY, MYHISTORY } from './graphqlQM';
+import { ADDITEMHISTORY, DELETEITEMHISTORY, DELETEMYHISTORY, MYHISTORY } from './graphqlQM';
 export const historyService = ()=>{
 
     const useGetMyHistory = (jwt) => {
@@ -11,13 +11,18 @@ export const historyService = ()=>{
         return useMutation(ADDITEMHISTORY);
     }
 
-    const isLoggedStorage = () =>{
-        return !!window.localStorage.getItem("userToken");
+    const useDeleteItemHistory = () =>{
+        return useMutation(DELETEITEMHISTORY);
+    }
+
+    const useDeleteMyHistory = () =>{
+        return useMutation(DELETEMYHISTORY);
     }
 
     return {
         useAddItemHistory,
         useGetMyHistory,
-        isLoggedStorage
+        useDeleteItemHistory,
+        useDeleteMyHistory
     }
 }

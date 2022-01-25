@@ -2,14 +2,15 @@ import React from 'react';
 import HistoryCard from './HistoryCard';
 
 function HistoryList(props) {
-  return(
+  const sortedProducts = props.history.slice().sort((a, b) => b.date - a.date).reverse();
+  return (
     <div className='history-list'>
-        <ul className="card-wrapper">
-            {props.history.map((el) => <HistoryCard key={el.id} item={el} /> ) }
-        </ul>
-        
+      <ul className="card-wrapper">
+        {sortedProducts.map((el) => <HistoryCard key={el.id} item={el} refetch={props.refetch} />)}
+      </ul>
     </div>
   );
 }
 
 export default HistoryList;
+
