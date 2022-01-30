@@ -14,4 +14,20 @@ export const GETCART   = gql`
         }
     `;
 
+export const UPDATECART   = gql`
+        mutation updateCartMutation($username: String!,$cart: Any){
+            updateShoppingLISt(
+                id:$username,
+                shoppingList:$cart
+
+            ){
+                _id,
+                product_list {
+                    product_id,
+                    quantity
+                }
+            }
+        }
+    `;
+
 

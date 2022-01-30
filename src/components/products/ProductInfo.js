@@ -1,8 +1,28 @@
 import React from 'react'
 import "./Products.scss";
 import { Link } from 'react-router-dom'
+import { GETCART } from '../../services/cart/graphqlQM';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
+import Button from '@mui/material/Button';
 
 const ProductInfo = (props) => {
+    const username=window.sessionStorage.getItem("user")
+    const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
+    var cart=[]
+    var phantom=[]
+    console.log(cart)
+    if(!cartLoading){
+
+        let phantom=cartData.shoppingListById.product_list
+        cart=[...phantom]
+    }
+    function handleAddCart(){
+        cart.push({"product_id":props.product.id,"quantity":1})
+        console.log("nuevo cart",cart)
+    }
+        
+
+    
     console.log(props.product.img_url)
     return (
         <div className='product-info'>
@@ -25,8 +45,8 @@ const ProductInfo = (props) => {
                         <p className="card-title">{props.product.name.toUpperCase()}</p>
                         <p className="card-title">{props.product.price}</p>
                         <p className="card-text">{props.product.stars} Estrellas</p>
-                        <button >Añadir al carrito</button>
-                        <button >Comprar</button>
+                        <Button onClick={()=>{handleAddCart()}}>Añadir al carrito</Button>
+                        <Button>Comprar</Button>
                     </div>
                 </div>
             </div>
