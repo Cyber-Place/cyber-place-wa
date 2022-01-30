@@ -14,10 +14,11 @@ function HeaderLogged() {
   let accServ = accountService();
   let navigate = useNavigate();
   const logoutUser = accServ.useLogout();
-
   const handleLogout = (e) => {
     logoutUser();
+    window.localStorage.removeItem('username')
     navigate("/", { replace: true });
+
   }
   
   return (

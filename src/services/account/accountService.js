@@ -24,6 +24,7 @@ export const accountService = () => {
                     window.localStorage.setItem(
                         'userToken', info.login.data.accessToken
                     );
+                    window.localStorage.setItem('username',data.username)
                     dispatch(loginAction(info.login.data.accessToken, data.username));
                 }
                 setData({
@@ -36,6 +37,7 @@ export const accountService = () => {
 
     const useLogout = () => {
         const dispatch = useDispatch();
+        
         return () => dispatch(logoutAction());
     };
 
