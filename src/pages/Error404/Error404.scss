@@ -1,0 +1,44 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Source mixin
+@mixin make-container($width, $padding-x: $container-padding-x) {
+    width: $width;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.error404 {
+    padding-top: 4%;
+    padding-bottom: 5%;
+    .custom-container {
+        @include make-container(70%);
+        background-color: rgb(230, 230, 230);
+    }
+    .message-container {
+        padding: 8% 0;
+        text-align: center;
+        .message-number {
+            font-size: 150px;
+            font-weight: 500;
+            .number-four {
+                color: #8a03a5;
+            }
+            .number-zero {
+                color: #1477b1;
+            }
+        }
+        .message-item {
+            font-size: 25px;
+            font-weight: 500;
+            color: #272727;
+        }
+    }
+    .image-container {
+        padding: 5% 0;
+        img {
+            width: 80%;
+        }
+    }
+}

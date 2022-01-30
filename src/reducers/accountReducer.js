@@ -2,31 +2,32 @@ import { CHECKJWT, LOGIN, LOGOUT } from "../types";
 
 
 const initialState = {
-    jwt:null,
-    isLogged:false
+    jwt: null,
+    isLogged: false,
+    username: null
 };
-export default function accountReducer(state = initialState, action){
+export default function accountReducer(state = initialState, action) {
     switch (action.type) {
-        case LOGIN:{
+        case LOGIN: {
             return {
-                ...state,
-                jwt:action.payload,
+                jwt: action.payload.jwt,
+                username: action.payload.username,
                 isLogged: true,
             };
         }
-            
-        case LOGOUT:{
+
+        case LOGOUT: {
             const userToken = window.localStorage.getItem("userToken");
-            if(userToken)window.localStorage.removeItem("userToken");
+            if (userToken) window.localStorage.removeItem("userToken");
             return initialState;
         }
-        case CHECKJWT:{
-            const userToken = window.localStorage.getItem("userToken");
-            if(userToken){
+        case CHECKJWT: {
+            if (action.payload.username && action.payload.username) {
                 return {
-                    jwt:userToken,
+                    jwt: action.payload.jwt,
+                    username: action.payload.username,
                     isLogged: true,
-                }
+                };
             }
             return initialState;
         }

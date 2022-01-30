@@ -1,15 +1,10 @@
-.product-list {
-    margin-top: 2%;
-
-    display: table;
-    margin: 0 auto;
-
+.history-list {
     .card {
         background-color: rgb(252, 252, 252);
         border-radius: 0.5rem;
 
         padding-bottom: 1rem;
-
+        margin-top: 10px;
         overflow: hidden;
 
         img {
@@ -36,18 +31,28 @@
 
         .name {
             margin-top: 2%;
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 500;
             color: rgb(59, 59, 59);
         }
         .price {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 400;
             color: rgb(71, 71, 71);
         }
-        .envio {
-            font-size: 15px;
-            color: rgb(78, 78, 78);
+        .date {
+            font-size: 0.65rem;
+            color: rgb(90, 90, 90);
+        }
+        .delete-item {
+            background-color: #f87171;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.7rem;
+            color: #242424;
+            border: 0;
+            &:hover {
+                background-color: #e78585;
+            }
         }
     }
 
@@ -57,11 +62,19 @@
         margin: 0;
         display: grid;
         //grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
-        grid-template-columns: repeat(3, minmax(0, 100%));
-        grid-gap: 2%;
+        grid-template-columns: repeat(7, minmax(0, 100%));
+        grid-gap: 1%;
         //max-width: 20%;
         width: 100%;
         padding-left: 1rem;
         padding-right: 1rem;
     }
+}
+.history-no-items {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 20px;
+    font-weight: 500;
 }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { accountService } from '../../services/account/accountService';
 import ErrorBox from '../common/ErrorBox';
@@ -9,8 +9,8 @@ import '../login/LoginComponent.scss';
 import { Link } from 'react-router-dom';
 
 const initialData = {
-    username : "",
-    password : ""
+    username: "",
+    password: ""
 }
 
 const LoginComponent = () => {
@@ -23,53 +23,54 @@ const LoginComponent = () => {
     const [data, setData] = useState(initialData);
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const [ loginUser ] = accServ.useLogin({setErrorMessage,data,setData});
-
+    const [loginUser] = accServ.useLogin({ setErrorMessage, data, setData });
 
     useEffect(() => {
-        if(access.isLogged)navigate("../", { replace: true });
+        if (access.isLogged) navigate("/", { replace: true });
     }, [access, navigate])
-    
 
-    const handleLogin = (e) =>{
+
+    const handleLogin = (e) => {
         e.preventDefault();
         setErrorMessage(null);
-        if(!data.username || !data.password){
+        if (!data.username || !data.password) {
             setErrorMessage("Datos incompletos");
             return;
         }
-        
-        loginUser({variables: {
-            username: data.username,
-            password: data.password
-        }})
+
+        loginUser({
+            variables: {
+                username: data.username,
+                password: data.password
+            }
+        })
     };
 
-    
-    const handleChange = (e) =>{
+
+    const handleChange = (e) => {
         setData({
             ...data,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         });
     };
     return (
         <div className='container-login'>
             <h3>Iniciar sesión</h3>
-            <div className = "not-register">
+            <div className="not-register">
                 <span> ¿No estás registrado? </span>
-                <Link to ="/register" className='register'> Registrate </Link>
+                <Link to="/register" className='register'> Registrate </Link>
             </div>
             <form className="mt-3 mb-5 form-login" onSubmit={handleLogin}>
                 <div className="f_placeholder">Usuario</div>
-                <input type="text" name='username' placeholder='' onChange={handleChange} value={data.username} /> 
+                <input type="text" name='username' placeholder='' onChange={handleChange} value={data.username} />
                 <div className="f_placeholder">Contraseña</div>
                 <input type="password" name='password' placeholder='' onChange={handleChange} value={data.password} />
                 <div className="f_placeholder"></div>
-                {errorMessage && <ErrorBox errorMessage={errorMessage}/>}
+                {errorMessage && <ErrorBox errorMessage={errorMessage} />}
                 <button type="submit">Ingresar</button>
             </form>
-            
-            
+
+
 
         </div>
     )

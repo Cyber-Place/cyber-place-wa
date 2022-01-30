@@ -1,23 +1,29 @@
 import React from 'react'
+import Loader from '../../components/loader/Loader';
+import ProductList from '../../components/products/ProductList';
+import { productsService } from '../../services/products/productsService';
 
-function Products() {
+import "./Products.scss"
+
+
+function BuyProduct() {
+    let prodServ = productsService();
+    const { data, loading } = prodServ.useGetAllProducts();
+
+
     return (
-        <div>
-            <h2>Gestión de productos</h2>
-            <br />
-            <ul>
-                <div>
-                    <a href="/product/add">Agregar</a>
-                </div>
-                <div>
-                    <a href="/product/edit">Editar</a>
-                </div>
-                <div>
-                    <a href="/product/delete">Borrar</a>
-                </div>
-            </ul>
+        <div className='products'>
+            <div className='custom-container-gray'>
+                <h4>Productos más relevantes.</h4>
+                {loading &&
+                    <div className='loader'>
+                        <Loader />
+                    </div>
+                }
+                {data && <ProductList products={data.allProducts} />}
+            </div>
         </div>
     )
 }
 
-export default Products
+export default BuyProduct

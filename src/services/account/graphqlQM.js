@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN   = gql`
+export const LOGIN = gql`
         mutation loginMut($username: String!, $password: String!){
             login(
                 user:{
@@ -18,7 +18,7 @@ export const LOGIN   = gql`
     `;
 
 
-export const REGISTER   = gql`
+export const REGISTER = gql`
     mutation registerMut($username: String!, $full_name: String!, $email: String!, $password: String!){
         register(
             user:{
@@ -33,7 +33,7 @@ export const REGISTER   = gql`
     }
 `;
 
-export const GETUSERNAME   = gql`
+export const GETUSERNAME = gql`
     query usernameQue($jwt: String!){
         getusername(
             jwt:$jwt

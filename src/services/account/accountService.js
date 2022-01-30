@@ -1,93 +1,99 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { checkJwtAction, loginAction, logoutAction } from '../../actions/accountActions';
-import { GETUSERNAMEJWT, LOGIN, REGISTER ,GETUSERNAME} from './graphqlQM';
+import { GETUSERNAMEJWT, LOGIN, REGISTER } from './graphqlQM';
 
 
-export const accountService = ()=>{
-    
-    const useLogin = ({setErrorMessage, data, setData}) =>{
+export const accountService = () => {
+
+    const useLogin = ({ setErrorMessage, data, setData }) => {
         const dispatch = useDispatch();
-
-        return useMutation(LOGIN,{
+        return useMutation(LOGIN, {
             onError: (error) => {
-                if(error.graphQLErrors){
-                    if(error.graphQLErrors.length>0)setErrorMessage(error.graphQLErrors[0].message);
+                if (error.graphQLErrors) {
+                    if (error.graphQLErrors.length > 0) setErrorMessage(error.graphQLErrors[0].message);
                 }
                 else setErrorMessage("Error con el servidor");
                 setData({
                     ...data,
-                    password : ""
+                    password: ""
                 });
             },
             onCompleted: (info) => {
-                if(info.login.data.accessToken){
+                if (info.login.data.accessToken) {
                     window.localStorage.setItem(
                         'userToken', info.login.data.accessToken
-                    )
-                    dispatch(loginAction(info.login.data.accessToken));
+                    );
+                    dispatch(loginAction(info.login.data.accessToken, data.username));
                 }
                 setData({
-                    username : "",
-                    password : "",
+                    username: "",
+                    password: "",
                 });
             }
         });;
     };
 
-    const useLogout = () =>{
+    const useLogout = () => {
         const dispatch = useDispatch();
         return () => dispatch(logoutAction());
     };
 
-    const useCheckJWT = () =>{
+    const useCheckJWT = () => {
         const dispatch = useDispatch();
-        return () => dispatch(checkJwtAction());
+        const jwt = window.localStorage.getItem("userToken");
+        const { data: usernameData } = useQuery(GETUSERNAMEJWT, {variables: { jwt }, skip: !jwt, onError:(error)=>console.log("Error CheckJWT - "+error)});
+        const username = usernameData?.getusername?.data;
+        return () => dispatch(checkJwtAction(jwt, username));
     };
 
-    const useRegister = ({setErrorMessage, setSuccessMessage, setData}) =>{
-        return useMutation(REGISTER,{
+    const useRegister = ({ setErrorMessage, setSuccessMessage, setData }) => {
+        return useMutation(REGISTER, {
             onError: (error) => {
-                if(error.graphQLErrors){
-                    if(error.graphQLErrors.length>0)setErrorMessage(error.graphQLErrors[0].message);
+                if (error.graphQLErrors) {
+                    if (error.graphQLErrors.length > 0) setErrorMessage(error.graphQLErrors[0].message);
                 }
                 else setErrorMessage("Error con el servidor");
                 setData({
-                    username : "",
-                    full_name : "",
-                    email : "",
-                    password : "",
-                    r_password : "",
+                    username: "",
+                    full_name: "",
+                    email: "",
+                    password: "",
+                    r_password: "",
                 });
             },
             onCompleted: (info) => {
                 setSuccessMessage(info.register.message);
                 setData({
-                    username : "",
-                    full_name : "",
-                    email : "",
-                    password : "",
-                    r_password : "",
+                    username: "",
+                    full_name: "",
+                    email: "",
+                    password: "",
+                    r_password: "",
                 });
             }
         });;
     };
 
-    const useGetUsername = ({variables}) =>{
-        console.log(variables);
-        return useQuery(GETUSERNAMEJWT,{
+    const useGetUsername = ({ variables }) => {
+        return useQuery(GETUSERNAMEJWT, {
             variables,
             onError: (error) => {
-                console.log(error);
+                console.log("Error GetUsername - "+error)
             }
         })
     };
 
-    return{
+    const isLoggedStorage = () =>{
+        return !!window.localStorage.getItem("userToken");
+    }
+
+    return {
         useLogin,
         useLogout,
         useCheckJWT,
         useRegister,
         useGetUsername,
+        isLoggedStorage,
     }
 }
