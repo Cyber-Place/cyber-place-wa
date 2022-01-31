@@ -4,7 +4,6 @@ import { Dropdown } from 'react-bootstrap';
 import { ReactComponent as Settings } from '../../assets/icons/sliders.svg';
 import { ReactComponent as Account } from '../../assets/icons/account.svg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
 import './Header.scss'
 import SearchBar from './SearchBar';
 
