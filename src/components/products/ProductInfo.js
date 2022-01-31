@@ -1,29 +1,39 @@
 import React from 'react'
 import "./Products.scss";
 import { Link } from 'react-router-dom'
-import { GETCART } from '../../services/cart/graphqlQM';
+import { GETCART , UPDATECART} from '../../services/cart/graphqlQM';
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 import Button from '@mui/material/Button';
+import { accountService } from '../../services/account/accountService';
 
 const ProductInfo = (props) => {
-    const username=window.sessionStorage.getItem("user")
-    const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
-    var cart=[]
-    var phantom=[]
-    console.log(cart)
-    if(!cartLoading){
+    let accountSer=accountService();
+    let isLogged=accountSer.isLoggedStorage()
 
-        let phantom=cartData.shoppingListById.product_list
-        cart=[...phantom]
+    const username=window.localStorage.getItem('username')
+    //const { loading:cartLoading,data:cartData} = useQuery(GETCART,{variables:{username:username}})
+    const [getCart,{loading:cartLoading,data:cartData}]=useLazyQuery(GETCART,{variables:{username:username}})
+    const [updateCart,{data}]=useMutation(UPDATECART)
+    async function handleAddCart(event,id){
+        if(username!=null){
+            let toSendList=[]
+            let result=await getCart()
+            for(let product in result.data.shoppingListById.product_list){
+                if(result.data.shoppingListById.product_list[product].product.id==id){
+                    console.log("ya esta")
+                    return 
+                }
+                toSendList.push({product_id:result.data.shoppingListById.product_list[product].product.id,quantity:result.data.shoppingListById.product_list[product].quantity})
+            }
+            toSendList.push({product_id:id,quantity:1})
+            toSendList={product_list:toSendList}   
+            console.log(toSendList)
+            updateCart({variables:{username:window.localStorage.getItem('username'),cart:toSendList}}).then(result=>{
+                window.location.reload()
+            })
+            
+        }
     }
-    function handleAddCart(){
-        cart.push({"product_id":props.product.id,"quantity":1})
-        console.log("nuevo cart",cart)
-    }
-        
-
-    
-    console.log(props.product.img_url)
     return (
         <div className='product-info'>
             <h5>Información del producto</h5>
@@ -45,7 +55,7 @@ const ProductInfo = (props) => {
                         <p className="card-title">{props.product.name.toUpperCase()}</p>
                         <p className="card-title">{props.product.price}</p>
                         <p className="card-text">{props.product.stars} Estrellas</p>
-                        <Button onClick={()=>{handleAddCart()}}>Añadir al carrito</Button>
+                        <Button onClick={event=>handleAddCart(event,props.product.id)}>{isLogged && "Añadir al carrito"}</Button>
                         <Button>Comprar</Button>
                     </div>
                 </div>

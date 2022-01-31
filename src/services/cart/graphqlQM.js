@@ -7,7 +7,14 @@ export const GETCART   = gql`
             ){
                 _id,
                 product_list {
-                    product_id,
+                    product{
+                        id,
+                        name,
+                        price,
+                        description,
+                        stars,
+                        img_url
+                    },
                     quantity
                 }
             }
@@ -15,15 +22,22 @@ export const GETCART   = gql`
     `;
 
 export const UPDATECART   = gql`
-        mutation updateCartMutation($username: String!,$cart: Any){
-            updateShoppingLISt(
+        mutation updateCartMutation($username: String!,$cart: purchaseUpdateShoppingListInput!){
+            updateShoppingList(
                 id:$username,
                 shoppingList:$cart
 
             ){
                 _id,
                 product_list {
-                    product_id,
+                    product{
+                        id,
+                        name,
+                        price,
+                        description,
+                        stars,
+                        img_url
+                    },
                     quantity
                 }
             }
