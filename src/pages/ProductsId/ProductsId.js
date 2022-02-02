@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import ProductInfo from '../../components/products/ProductInfo';
 import { historyService } from '../../services/history/historyService';
 import { productsService } from '../../services/products/productsService';
@@ -30,19 +30,22 @@ function InfoProduct() {
 
     useEffect(() => {
         if (jwt && username && product) {
-            addItemHistory({variables:{jwt:jwt,productId:product.id}});
+            addItemHistory({ variables: { jwt: jwt, productId: product.id } });
         }
     }, [jwt, username, product, addItemHistory]);
 
 
 
     return (
-        <div className='info-producto mt-5'>
-            {JSON.stringify(product)}
-            <div className='info-producto mt-5'>
-                <div className='custom-container-75'>
-                    {product && <ProductInfo product={product} />}
-                </div>
+        <div className='product-id mt-5 custom-container-75'>
+            <div className='title-producto mt-5'>
+                <h5>Información del producto</h5>
+                <Link to="/" className="volver" >
+                    <span className="volver">{"< "}Volver a productos</span>
+                </Link>
+            </div>
+            <div className='product-info mt-2'>
+                {product && <ProductInfo product={product} />}
             </div>
         </div>
     )
