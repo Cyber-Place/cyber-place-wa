@@ -6,11 +6,14 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Products from '../pages/Products/Products';
 import ProductsId from '../pages/ProductsId/ProductsId';
+import History from '../pages/History/History';
+import Cart from '../pages/Cart/Cart';
 import Error404 from '../pages/Error404/Error404';
 
 
+
 import AddProduct from '../components/products/add-product/add.component';
-import Cart from '../components/cart/cart.component';
+
 import EditProduct from '../components/products/edit-product/edit.component';
 import DeleteProduct from '../components/products/delete-product/remove.component';
 
@@ -24,7 +27,6 @@ import ProductManagement from '../pages/ProductManagement/ProductManagement';
 
 import { accountService } from '../services/account/accountService';
 
-import { History } from '../pages/History/History';
 import Footer from '../components/footer/Footer';
 
 

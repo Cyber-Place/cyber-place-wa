@@ -10,7 +10,7 @@ import './History.scss';
 import HistoryNoItems from '../../components/history/HistoryNoItems';
 
 
-export const History = () => {
+function History() {
     const navigate = useNavigate();
     const histServ = historyService();
     const accServ = accountService();
@@ -32,17 +32,21 @@ export const History = () => {
         if (jwt) {
             deleteMyHistory({ variables: { jwt: jwt }, onError: (error) => { console.log(error); }, onCompleted: () => refetch() });
         }
-    };     
+    };
 
     return (
         <div className="history">
             <div className='custom-container'>
                 <div className='head-container'>
                     <h4>Tu historial de búsqueda</h4>
-                    <button className='delete-button' onClick={handleDeleteHistory}><Trash className='me-3'/>Eliminar todos los artículos</button>
+                    <button className='delete-button' onClick={handleDeleteHistory}><Trash className='me-3' />Eliminar todos los artículos</button>
                 </div>
-                {history && (history.length > 0 ? <HistoryList history={history} refetch={refetch}/> : <HistoryNoItems/> ) }
+                {history && (history.length > 0 ? <HistoryList history={history} refetch={refetch} /> : <HistoryNoItems />)}
             </div>
         </div>
     )
 }
+
+
+
+export default History;

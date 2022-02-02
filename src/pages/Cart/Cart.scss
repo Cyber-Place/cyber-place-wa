@@ -1,0 +1,38 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Source mixin
+@mixin make-container($width, $padding-x: $container-padding-x) {
+    width: $width;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cart {
+    margin-top: 2%;
+    @include make-container(95%);
+    background-color: transparent;
+    .volver {
+        color: rgb(65, 65, 65);
+        font-size: 15px;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .cart-list-container {
+        background-color: white;
+    }
+    .amount-container{
+        margin-left: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+        background-color: white;
+        min-height: 20%;
+    }
+    .button-payment{
+        width: 100%;
+    }
+}
