@@ -5,10 +5,10 @@ export const cartService = () => {
 
 
     const useGetCart = (username) => {
-        
-        const { data, error } = useQuery(GETCART,
-            { variables: { username: username }, skip:!username, onError:(error)=>{console.log("Error consulta carrito de compra " + error)} });
-        return {data, error};
+
+        const { data, error, refetch } = useQuery(GETCART,
+            { variables: { username: username }, skip: !username, onError: (error) => { console.log("Error consulta carrito de compra " + error) }, fetchPolicy: "network-only" });
+        return { data, error, refetch };
     }
 
     const useUpdateCart = () => {
